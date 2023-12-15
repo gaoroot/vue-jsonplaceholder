@@ -1,9 +1,16 @@
 <script setup>
-import PostsView from './views/PostsView.vue'
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <PostsView />
+  <header class="navbar">
+    <div>
+      <nav>
+        <RouterLink to="/">Posts</RouterLink> -
+        <RouterLink to="/authors">Authors</RouterLink>
+      </nav>
+    </div>
+  </header>
+
+  <RouterView />
 </template>
-
-
