@@ -1,9 +1,9 @@
 <script setup>
-import HomeView from './views/HomeView.vue'
+import PostsView from './views/PostsView.vue'
 </script>
 
 <template>
-  <HomeView />
+  <PostsView />
 </template>
 
 
