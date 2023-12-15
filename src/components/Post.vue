@@ -17,12 +17,12 @@ fetchComments()
     <div>
       <h2>{{ post.title }}</h2>
       <p v-if="author">
-        Написано:
+        Пост написал:
         <RouterLink :to="`/author/${author.username}`">
           {{ author.name }}
         </RouterLink>
         |
-        <span> Коментарии: {{ getPostComments.length }} </span>
+        <span> Коментариев: {{ getPostComments.length }} </span>
       </p>
       <p>{{ post.body }}</p>
     </div>
