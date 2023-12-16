@@ -1,21 +1,60 @@
 <script setup>
-  import { RouterLink } from 'vue-router'
-  import { storeToRefs } from 'pinia'
-  import { usePostStore } from '../stores/post'
+import { RouterLink } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { usePostStore } from '../stores/post'
+import { ref, computed } from 'vue'
 
-  const { posts, loading, error } = storeToRefs(usePostStore())
-  const { fetchPosts } = usePostStore()
+const { posts, loading, error } = storeToRefs(usePostStore())
+const { fetchPosts } = usePostStore()
 
-  fetchPosts()
+let page = ref(1)
+
+const perPage = 10
+
+const paginatedData = computed(() => {
+  const start = (page.value - 1) * perPage
+  const end = page.value * perPage
+
+  return posts.value.slice(start, end)
+})
+
+const nextPage = () => {
+  if (page.value !== Math.ceil(posts.length / perPage)) {
+    page.value += 1
+  }
+}
+
+const backPage = () => {
+  if (page.value !== 1) {
+    page.value -= 1
+  }
+}
+
+const goToPage = (numPage) => {
+  page.value = numPage
+}
+
+fetchPosts()
 </script>
 
 <template>
   <main>
     <p v-if="loading">Загрузка постов...</p>
     <p v-if="error">{{ error.message }}</p>
-    <p v-if="posts" v-for="post in posts" :key="post.id">
+
+    <div v-if="posts" v-for="post in paginatedData" :key="post.id">
       <RouterLink :to="`/post/${post.id}`">{{ post.title }}</RouterLink>
       <p>{{ post.body }}</p>
-    </p>
+    </div>
+
+    <button @click="backPage">prev</button>
+    <button
+      v-for="item in Math.ceil(posts.length / perPage)"
+      :key="item"
+      @click="() => goToPage(item)"
+    >
+      {{ item }}
+    </button>
+    <button @click="nextPage">next</button>
   </main>
 </template>
