@@ -44,17 +44,20 @@ fetchPosts()
     <p v-if="error">{{ error.message }}</p>
 
     <div v-if="posts" v-for="post in paginatedData" :key="post.id">
-      №{{ post.id }}: 
+      №{{ post.id }}:
       <RouterLink :to="`/post/${post.id}`">{{ post.title }}</RouterLink>
       <p>{{ post.body }}</p>
     </div>
 
     <button @click="backPage">Предыдущая</button>
-    <button
+    <!-- <button
       v-for="item in Math.ceil(posts.length / perPage)"
       :key="item"
       @click="() => goToPage(item)"
     >
+      {{ item }}
+    </button> -->
+    <button v-for="item in posts.length / perPage" :key="item" @click="() => goToPage(item)">
       {{ item }}
     </button>
     <button @click="nextPage">Следующаяя</button>
