@@ -19,7 +19,8 @@ const paginatedData = computed(() => {
 })
 
 const nextPage = () => {
-  if (page.value !== Math.ceil(posts.length / perPage)) {
+  // if (page.value !== Math.ceil(posts.length / perPage)) {
+  if (page.value !== posts.length / perPage) {
     page.value += 1
   }
 }
