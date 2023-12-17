@@ -7,9 +7,11 @@ import { RouterLink, RouterView } from 'vue-router'
     <div>
       <nav>
         <RouterLink to="/">Posts</RouterLink> -
-        <RouterLink to="/authors">Authors</RouterLink>
+        <RouterLink to="/authors">Authors</RouterLink> -
+        <RouterLink to="/todos">Todos</RouterLink>
       </nav>
     </div>
+    <br>
   </header>
 
   <RouterView />

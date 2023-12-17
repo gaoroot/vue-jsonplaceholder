@@ -1,11 +1,11 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { usePostStore } from '../stores/post'
+import { useTodoStore } from '../stores/todo'
 import { ref, computed } from 'vue'
 
-const { posts, loading, error } = storeToRefs(usePostStore())
-const { fetchPosts } = usePostStore()
+const { todos, loading, error } = storeToRefs(useTodoStore())
+const { fetchTodos } = useTodoStore()
 
 let page = ref(1)
 
@@ -15,11 +15,11 @@ const paginatedData = computed(() => {
   const start = (page.value - 1) * perPage
   const end = page.value * perPage
 
-  return posts.value.slice(start, end)
+  return todos.value.slice(start, end)
 })
 
 const nextPage = () => {
-  if (page.value !== posts.length / perPage) {
+  if (page.value !== todos.length / perPage) {
     page.value += 1
   }
 }
@@ -34,22 +34,22 @@ const goToPage = (numPage) => {
   page.value = numPage
 }
 
-fetchPosts()
+fetchTodos()
 </script>
 
 <template>
   <main>
-    <p v-if="loading">Загрузка постов...</p>
+    <p v-if="loading">Загрузка списка дел...</p>
     <p v-if="error">{{ error.message }}</p>
 
-    <div v-if="posts" v-for="post in paginatedData" :key="post.id">
-      №{{ post.id }}:
-      <RouterLink :to="`/post/${post.id}`">{{ post.title }}</RouterLink>
-      <p>{{ post.body }}</p>
+    <div v-if="todos" v-for="todo in paginatedData" :key="todo.id">
+      №{{ todo.id }}:
+      <RouterLink :to="`/todo/${todo.id}`">{{ todo.title }}</RouterLink>
+      <p>{{ todo.completed }}</p>
     </div>
 
     <button @click="backPage">Предыдущая</button>
-    <button v-for="item in posts.length / perPage" :key="item" @click="() => goToPage(item)">
+    <button v-for="item in todos.length / perPage" :key="item" @click="() => goToPage(item)">
       {{ item }}
     </button>
     <button @click="nextPage">Следующаяя</button>
