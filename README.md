@@ -16,6 +16,12 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
+### Запутить на всех сетевых интерфейсах
+
+```sh
+npm run dev -- --host 0.0.0.0
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh
