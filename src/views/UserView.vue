@@ -2,20 +2,20 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useAuthorStore } from '../stores/author'
+import { useUserStore } from '../stores/user'
 import { usePostStore } from '../stores/post'
 import { useTodoStore } from '../stores/todo'
-import Author from '../components/Author.vue'
+import User from '../components/User.vue'
 
 const route = useRoute()
-const { authors } = storeToRefs(useAuthorStore())
+const { users } = storeToRefs(useUserStore())
 const { getPostsPerAuthor } = storeToRefs(usePostStore())
 const { getTodosPerAuthor } = storeToRefs(useTodoStore())
 const { fetchPosts } = usePostStore()
 const { fetchTodos } = useTodoStore()
 
 const getAuthorByUserName = computed(() => {
-  return authors.value.find((author) => author.username === route.params.username)
+  return users.value.find((user) => user.username === route.params.username)
 })
 
 fetchPosts()
@@ -24,7 +24,11 @@ fetchTodos()
 
 <template>
   <div>
-    <author :author="getAuthorByUserName" :posts="getPostsPerAuthor(getAuthorByUserName.id)" :todos="getTodosPerAuthor(getAuthorByUserName.id)">
-    </author>
+    <User
+      :user="getAuthorByUserName"
+      :posts="getPostsPerAuthor(getAuthorByUserName.id)"
+      :todos="getTodosPerAuthor(getAuthorByUserName.id)"
+    >
+    </User>
   </div>
 </template>

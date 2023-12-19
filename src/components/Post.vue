@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useCommentStore } from '../stores/comment'
 import Comment from '../components/Comment.vue'
 
-defineProps(['post', 'author'])
+defineProps(['post', 'user'])
 
 const { getPostComments } = storeToRefs(useCommentStore())
 const { fetchComments } = useCommentStore()
@@ -16,10 +16,10 @@ fetchComments()
   <div>
     <div>
       <h2>{{ post.title }}</h2>
-      <p v-if="author">
+      <p v-if="user">
         Пост написал:
-        <RouterLink :to="`/author/${author.username}`">
-          {{ author.name }}
+        <RouterLink :to="`/user/${user.username}`">
+          {{ user.name }}
         </RouterLink>
         |
         <span> Коментариев: {{ getPostComments.length }} </span>

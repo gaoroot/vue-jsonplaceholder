@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import PostsView from '../views/PostsView.vue' 
 import PostView from '../views/PostView.vue' 
-import AuthorsView from '../views/AuthorsView.vue'
-import AuthorView from '../views/AuthorView.vue'
+import UsersView from '../views/UsersView.vue'
+import UserView from '../views/UserView.vue'
 import TodosView from '../views/TodosView.vue'
 import TodoView from '../views/TodoView.vue'
 
@@ -20,14 +20,14 @@ const router = createRouter({
       component: PostView 
     },
     {
-      path: '/authors',
-      name: 'authors',
-      component: AuthorsView
+      path: '/users',
+      name: 'users',
+      component: UsersView
     },
     { 
-      path: '/author/:username', 
-      name: 'author', 
-      component: AuthorView 
+      path: '/user/:username', 
+      name: 'user', 
+      component: UserView 
     },
     {
       path: '/todos',

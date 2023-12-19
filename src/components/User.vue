@@ -1,12 +1,12 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 
-defineProps(['author', 'posts', 'todos'])
+defineProps(['user', 'posts', 'todos'])
 </script>
 
 <template>
   <div>
-    <h1>{{ author.name }}</h1>
+    <h1>{{ user.name }}</h1>
     <p>{{ posts.length }} постов написал автор:</p>
     <p v-for="post in posts" :key="post.id">
       <RouterLink :to="`/post/${post.id}`">{{ post.title }}</RouterLink>
