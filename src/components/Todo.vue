@@ -4,7 +4,6 @@ defineProps(['todo'])
 
 <template>
   <div>
-    <h2>{{ todo.title }}</h2>
-    <p>{{ todo.completed }}</p>
+    <h2>{{ todo.completed ? "🗹" : "☐" }} {{ todo.title }}</h2>
   </div>
 </template>

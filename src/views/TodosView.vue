@@ -43,9 +43,8 @@ fetchTodos()
     <p v-if="error">{{ error.message }}</p>
 
     <div v-if="todos" v-for="todo in paginatedData" :key="todo.id">
-      №{{ todo.id }}:
+      №{{ todo.id }}: {{ todo.completed ? '🗹' : '☐' }}
       <RouterLink :to="`/todo/${todo.id}`">{{ todo.title }}</RouterLink>
-      <p>{{ todo.completed }}</p>
     </div>
 
     <button @click="backPage">Предыдущая</button>

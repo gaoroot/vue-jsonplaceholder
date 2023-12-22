@@ -5,12 +5,18 @@ import UsersView from '../views/UsersView.vue'
 import UserView from '../views/UserView.vue'
 import TodosView from '../views/TodosView.vue'
 import TodoView from '../views/TodoView.vue'
+import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      name: 'home',
+      component: HomeView
+    },
+    {
+      path: '/posts',
       name: 'posts',
       component: PostsView
     },
