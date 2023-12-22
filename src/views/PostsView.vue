@@ -39,7 +39,7 @@ fetchPosts()
 
 <template>
   <main>
-    <p v-if="loading">Загрузка постов...</p>
+    <p v-if="loading">Загрузка списка постов...</p>
     <p v-if="error">{{ error.message }}</p>
 
     <div v-if="posts" v-for="post in paginatedData" :key="post.id">
@@ -47,6 +47,7 @@ fetchPosts()
       <RouterLink :to="`/post/${post.id}`">{{ post.title }}</RouterLink>
       <p>{{ post.body }}</p>
     </div>
+    <br />
 
     <button @click="backPage">Предыдущая</button>
     <button v-for="item in posts.length / perPage" :key="item" @click="() => goToPage(item)">

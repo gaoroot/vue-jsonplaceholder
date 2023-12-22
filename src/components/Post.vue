@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useCommentStore } from '../stores/comment'
 import Comment from '../components/Comment.vue'
 
-defineProps(['post', 'user'])
+defineProps(['post', 'user', 'comments'])
 
 const { getPostComments } = storeToRefs(useCommentStore())
 const { fetchComments } = useCommentStore()
@@ -28,6 +28,7 @@ fetchComments()
     </div>
     <hr />
     <h3>Коментарии:</h3>
+    <p v-if="comments"></p>
     <comment :comments="getPostComments"></comment>
   </div>
 </template>

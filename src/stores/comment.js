@@ -1,22 +1,30 @@
 import { defineStore } from 'pinia'
 import { usePostStore } from './post'
+import { computed, ref } from 'vue'
 
-export const useCommentStore = defineStore({
-  id: 'comment',
-  state: () => ({
-    comments: []
-  }),
-  getters: {
-    getPostComments: (state) => {
-      const postSore = usePostStore()
-      return state.comments.filter((post) => post.postId === postSore.post.id)
-    }
-  },
-  actions: {
-    async fetchComments() {
-      this.comments = await fetch('https://jsonplaceholder.typicode.com/comments').then(
-        (response) => response.json()
-      )
+const urlComments = 'https://jsonplaceholder.typicode.com/comments'
+
+export const useCommentStore = defineStore('comment', () => {
+  const comments = ref([])
+  const loading = ref(false)
+  const error = ref(null)
+  const postStore = usePostStore()
+
+  const getPostComments = computed(() => comments.value.filter((post) => post.postId === postStore.post.id))
+
+  const fetchComments = async () => {
+    comments.value = []
+    loading.value = true
+    try {
+      comments.value = await fetch(urlComments).then((response) => response.json())
+    } catch (error) {
+      error.value = error
+      console.log('error_urlComments', error)
+      alert(error)
+    } finally {
+      loading.value = false
     }
   }
+
+  return { comments, getPostComments, fetchComments, postStore, loading, error }
 })

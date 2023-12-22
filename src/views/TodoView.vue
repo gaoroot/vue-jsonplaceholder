@@ -3,7 +3,6 @@ import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useTodoStore } from '../stores/todo'
 import Todo from '../components/Todo.vue'
-
 const route = useRoute()
 const { todo, loading, error } = storeToRefs(useTodoStore())
 const { fetchTodo } = useTodoStore()

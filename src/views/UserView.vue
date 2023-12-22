@@ -8,7 +8,7 @@ import { useTodoStore } from '../stores/todo'
 import User from '../components/User.vue'
 
 const route = useRoute()
-const { users } = storeToRefs(useUserStore())
+const { users, loading, error } = storeToRefs(useUserStore())
 const { getPostsPerAuthor } = storeToRefs(usePostStore())
 const { getTodosPerAuthor } = storeToRefs(useTodoStore())
 const { fetchPosts } = usePostStore()
@@ -24,11 +24,15 @@ fetchTodos()
 
 <template>
   <div>
-    <User
-      :user="getAuthorByUserName"
-      :posts="getPostsPerAuthor(getAuthorByUserName.id)"
-      :todos="getTodosPerAuthor(getAuthorByUserName.id)"
-    >
-    </User>
+    <p v-if="loading">Загрузка автора....</p>
+    <p v-if="error">{{ error.message }}</p>
+    <p v-if="users">
+      <User
+        :user="getAuthorByUserName"
+        :posts="getPostsPerAuthor(getAuthorByUserName.id)"
+        :todos="getTodosPerAuthor(getAuthorByUserName.id)"
+      >
+      </User>
+    </p>
   </div>
 </template>

@@ -46,6 +46,7 @@ fetchTodos()
       №{{ todo.id }}: {{ todo.completed ? '🗹' : '☐' }}
       <RouterLink :to="`/todo/${todo.id}`">{{ todo.title }}</RouterLink>
     </div>
+    <br />
 
     <button @click="backPage">Предыдущая</button>
     <button v-for="item in todos.length / perPage" :key="item" @click="() => goToPage(item)">
