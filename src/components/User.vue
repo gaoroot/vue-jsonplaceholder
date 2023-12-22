@@ -14,6 +14,7 @@ defineProps(['user', 'posts', 'todos'])
     <hr />
     <p>{{ todos.length }} задач у автора:</p>
     <p v-for="todo in todos" :key="todo.id">
+      {{ todo.completed ? '🗹' : '☐' }}
       <RouterLink :to="`/todo/${todo.id}`">{{ todo.title }}</RouterLink>
     </p>
   </div>
