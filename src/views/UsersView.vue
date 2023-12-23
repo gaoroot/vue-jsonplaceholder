@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useUserStore } from '../stores/user'
+import { useUserStore } from '../stores/users'
 
 const { users, loading, error } = storeToRefs(useUserStore())
 const { fetchUsers } = useUserStore()
@@ -20,3 +20,4 @@ fetchUsers()
     </div>
   </main>
 </template>
+../stores/users

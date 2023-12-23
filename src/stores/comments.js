@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { usePostStore } from './post'
+import { usePostStore } from './posts'
 import { computed, ref } from 'vue'
 
 const urlComments = 'https://jsonplaceholder.typicode.com/comments'

@@ -1,8 +1,8 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useUserStore } from '../stores/user'
-import { usePostStore } from '../stores/post'
+import { useUserStore } from '../stores/users'
+import { usePostStore } from '../stores/posts'
 import Post from '../components/Post.vue'
 
 const route = useRoute()
@@ -24,3 +24,4 @@ fetchPost(route.params.id)
     </p>
   </div>
 </template>
+../stores/posts../stores/users

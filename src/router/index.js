@@ -45,6 +45,16 @@ const router = createRouter({
       name: 'todo', 
       component: TodoView 
     },
+    // {
+    //   path: '/albums',
+    //   name: 'albums',
+    //   component: AlbumsView
+    // },
+    // { 
+    //   path: '/album/:id', 
+    //   name: 'album', 
+    //   component: AlbumView 
+    // },
   ]
 })
 

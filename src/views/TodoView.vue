@@ -1,7 +1,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useTodoStore } from '../stores/todo'
+import { useTodoStore } from '../stores/todos'
 import Todo from '../components/Todo.vue'
 const route = useRoute()
 const { todo, loading, error } = storeToRefs(useTodoStore())
@@ -19,3 +19,4 @@ fetchTodo(route.params.id)
     </p>
   </div>
 </template>
+../stores/todos

@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useTodoStore } from '../stores/todo'
+import { useTodoStore } from '../stores/todos'
 import { ref, computed } from 'vue'
 
 const { todos, loading, error } = storeToRefs(useTodoStore())
@@ -55,3 +55,4 @@ fetchTodos()
     <button @click="nextPage">Следующаяя</button>
   </main>
 </template>
+../stores/todos

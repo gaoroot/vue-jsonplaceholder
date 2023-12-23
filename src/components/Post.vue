@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useCommentStore } from '../stores/comment'
+import { useCommentStore } from '../stores/comments'
 import Comment from '../components/Comment.vue'
 
 defineProps(['post', 'user', 'comments'])
@@ -32,3 +32,4 @@ fetchComments()
     <comment :comments="getPostComments"></comment>
   </div>
 </template>
+../stores/comments

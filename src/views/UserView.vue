@@ -2,9 +2,9 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useUserStore } from '../stores/user'
-import { usePostStore } from '../stores/post'
-import { useTodoStore } from '../stores/todo'
+import { useUserStore } from '../stores/users'
+import { usePostStore } from '../stores/posts'
+import { useTodoStore } from '../stores/todos'
 import User from '../components/User.vue'
 
 const route = useRoute()
@@ -36,3 +36,4 @@ fetchTodos()
     </p>
   </div>
 </template>
+../stores/posts../stores/todos../stores/users

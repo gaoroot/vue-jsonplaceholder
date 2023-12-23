@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { usePostStore } from '../stores/post'
+import { usePostStore } from '../stores/posts'
 import { ref, computed } from 'vue'
 
 const { posts, loading, error } = storeToRefs(usePostStore())
@@ -56,3 +56,4 @@ fetchPosts()
     <button @click="nextPage">Следующаяя</button>
   </main>
 </template>
+../stores/posts
