@@ -9,7 +9,9 @@ export const useAlbumStore = defineStore('album', () => {
   const loading = ref(false)
   const error = ref(null)
 
-  const getAlbumsPerAuthor = computed(() => (authorId) => albums.value.filter((album) => album.userId === authorId))
+  const getAlbumsPerAuthor = computed(
+    () => (authorId) => albums.value.filter((album) => album.userId === authorId)
+  )
 
   const fetchAlbums = async () => {
     albums.value = []

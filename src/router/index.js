@@ -6,6 +6,10 @@ import UserView from '../views/UserView.vue'
 import TodosView from '../views/TodosView.vue'
 import TodoView from '../views/TodoView.vue'
 import HomeView from '../views/HomeView.vue'
+import AlbumsView from '../views/AlbumsView.vue'
+import AlbumView from '../views/AlbumView.vue'
+import PhotosView from '../views/PhotosView.vue'
+import PhotoView from '../views/PhotoView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,16 +49,26 @@ const router = createRouter({
       name: 'todo', 
       component: TodoView 
     },
-    // {
-    //   path: '/albums',
-    //   name: 'albums',
-    //   component: AlbumsView
-    // },
-    // { 
-    //   path: '/album/:id', 
-    //   name: 'album', 
-    //   component: AlbumView 
-    // },
+    {
+      path: '/albums',
+      name: 'albums',
+      component: AlbumsView
+    },
+    { 
+      path: '/album/:id', 
+      name: 'album', 
+      component: AlbumView 
+    },
+    {
+      path: '/photos',
+      name: 'photos',
+      component: PhotosView
+    },
+    { 
+      path: '/photo/:id', 
+      name: 'photo', 
+      component: PhotoView 
+    },
   ]
 })
 

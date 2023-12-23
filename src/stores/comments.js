@@ -10,7 +10,9 @@ export const useCommentStore = defineStore('comment', () => {
   const error = ref(null)
   const postStore = usePostStore()
 
-  const getPostComments = computed(() => comments.value.filter((post) => post.postId === postStore.post.id))
+  const getPostComments = computed(() =>
+    comments.value.filter((post) => post.postId === postStore.post.id)
+  )
 
   const fetchComments = async () => {
     comments.value = []

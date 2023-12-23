@@ -19,4 +19,3 @@ fetchTodo(route.params.id)
     </p>
   </div>
 </template>
-../stores/todos

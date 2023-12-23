@@ -36,4 +36,3 @@ fetchTodos()
     </p>
   </div>
 </template>
-../stores/posts../stores/todos../stores/users

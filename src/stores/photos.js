@@ -10,7 +10,9 @@ export const usePhotoStore = defineStore('photo', () => {
   const error = ref(null)
   const postAlbum = useAlbumStore()
 
-  const getPhotoUser = computed(() => users.value.find((user) => user.id === postAlbum.album.userId))
+  const getPhotoUser = computed(() =>
+    users.value.find((user) => user.id === postAlbum.album.userId)
+  )
 
   const fetchPhotos = async () => {
     photos.value = []

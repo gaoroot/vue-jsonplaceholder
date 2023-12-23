@@ -24,4 +24,3 @@ fetchPost(route.params.id)
     </p>
   </div>
 </template>
-../stores/posts../stores/users

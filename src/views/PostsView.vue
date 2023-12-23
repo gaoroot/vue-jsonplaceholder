@@ -56,4 +56,3 @@ fetchPosts()
     <button @click="nextPage">Следующаяя</button>
   </main>
 </template>
-../stores/posts

@@ -20,4 +20,3 @@ fetchUsers()
     </div>
   </main>
 </template>
-../stores/users

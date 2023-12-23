@@ -1,11 +1,11 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import { storeToRefs } from 'pinia'
-import { useTodoStore } from '../stores/todos'
+import { useAlbumStore } from '../stores/albums'
 import { ref, computed } from 'vue'
 
-const { todos, loading, error } = storeToRefs(useTodoStore())
-const { fetchTodos } = useTodoStore()
+const { albums, loading, error } = storeToRefs(useAlbumStore())
+const { fetchAlbums } = useAlbumStore()
 
 let page = ref(1)
 
@@ -15,11 +15,11 @@ const paginatedData = computed(() => {
   const start = (page.value - 1) * perPage
   const end = page.value * perPage
 
-  return todos.value.slice(start, end)
+  return albums.value.slice(start, end)
 })
 
 const nextPage = () => {
-  if (page.value !== todos.length / perPage) {
+  if (page.value !== albums.length / perPage) {
     page.value += 1
   }
 }
@@ -34,22 +34,22 @@ const goToPage = (numPage) => {
   page.value = numPage
 }
 
-fetchTodos()
+fetchAlbums()
 </script>
 
 <template>
   <main>
-    <p v-if="loading">Загрузка списка дел...</p>
+    <p v-if="loading">Загрузка списка альбомов...</p>
     <p v-if="error">{{ error.message }}</p>
 
-    <div v-if="todos" v-for="todo in paginatedData" :key="todo.id">
-      №{{ todo.id }}: {{ todo.completed ? '🗹' : '☐' }}
-      <RouterLink :to="`/todo/${todo.id}`">{{ todo.title }}</RouterLink>
+    <div v-if="albums" v-for="album in paginatedData" :key="album.id">
+      №{{ album.id }}
+      <RouterLink :to="`/album/${album.id}`">{{ album.title }}</RouterLink>
     </div>
     <br />
 
     <button @click="backPage">Предыдущая</button>
-    <button v-for="item in todos.length / perPage" :key="item" @click="() => goToPage(item)">
+    <button v-for="item in albums.length / perPage" :key="item" @click="() => goToPage(item)">
       {{ item }}
     </button>
     <button @click="nextPage">Следующаяя</button>

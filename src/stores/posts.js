@@ -9,7 +9,9 @@ export const usePostStore = defineStore('post', () => {
   const loading = ref(false)
   const error = ref(null)
 
-  const getPostsPerAuthor = computed(() => (authorId) => posts.value.filter((post) => post.userId === authorId))
+  const getPostsPerAuthor = computed(
+    () => (authorId) => posts.value.filter((post) => post.userId === authorId)
+  )
 
   const fetchPosts = async () => {
     posts.value = []
