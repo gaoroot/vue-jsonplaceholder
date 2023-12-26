@@ -7,7 +7,7 @@ import { ref, computed } from 'vue'
 const { posts, loading, error } = storeToRefs(usePostStore())
 const { fetchPosts } = usePostStore()
 
-let page = ref(1)
+const page = ref(1)
 
 const perPage = 10
 

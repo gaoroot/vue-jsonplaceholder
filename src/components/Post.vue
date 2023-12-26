@@ -32,4 +32,3 @@ fetchComments()
     <comment :comments="getPostComments"></comment>
   </div>
 </template>
-../stores/comments
