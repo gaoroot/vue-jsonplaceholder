@@ -39,3 +39,6 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## skeleton
+![skeleton](./public/img/skeleton.png "skeleton")
