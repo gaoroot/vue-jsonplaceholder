@@ -13,6 +13,8 @@ export const useAlbumStore = defineStore('album', () => {
     () => (authorId) => albums.value.filter((album) => album.userId === authorId)
   )
 
+  const albumCount = computed(() => albums.value.length)
+
   const fetchAlbums = async () => {
     albums.value = []
     loading.value = true
@@ -41,5 +43,23 @@ export const useAlbumStore = defineStore('album', () => {
     }
   }
 
-  return { albums, album, getAlbumsPerAuthor, fetchAlbum, fetchAlbums, loading, error }
+  const fetchAlbumId = async (id) => {
+    album.value = null
+    loading.value = true
+    try {
+      album.value = await fetch(`${urlAlbum}/${id}/photos`).then((response) => response.json()) ///albums/1/photos
+    } catch (error) {
+      error.value = error
+      alert(error)
+      console.log('error_urlAlbum_id', error)
+    } finally {
+      loading.value = false
+    }
+  }
+
+  // const getAlbum = computed(() => (id) => albums.value.find((album) => album.id === id))
+
+  // const getAlbums = computed(() => (authorId) => albums.value.filter((album) => album.userId === authorId))
+
+  return { albums, album, getAlbumsPerAuthor, albumCount, fetchAlbum, fetchAlbums, fetchAlbumId, loading, error }
 })

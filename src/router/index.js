@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import PostsView from '../views/PostsView.vue' 
-import PostView from '../views/PostView.vue' 
+import NotFound from '../views/NotFound.vue'
+import PostsView from '../views/PostsView.vue'
+import PostView from '../views/PostView.vue'
 import UsersView from '../views/UsersView.vue'
 import UserView from '../views/UserView.vue'
 import TodosView from '../views/TodosView.vue'
@@ -24,51 +25,61 @@ const router = createRouter({
       name: 'posts',
       component: PostsView
     },
-    { 
-      path: '/post/:id', 
-      name: 'post', 
-      component: PostView 
+    {
+      path: '/post/:id',
+      name: 'post',
+      component: PostView
     },
     {
       path: '/users',
       name: 'users',
       component: UsersView
     },
-    { 
-      path: '/user/:username', 
-      name: 'user', 
-      component: UserView 
+    {
+      path: '/user/:username',
+      name: 'user',
+      component: UserView
     },
     {
       path: '/todos',
       name: 'todos',
       component: TodosView
     },
-    { 
-      path: '/todo/:id', 
-      name: 'todo', 
-      component: TodoView 
+    {
+      path: '/todo/:id',
+      name: 'todo',
+      component: TodoView
     },
     {
       path: '/albums',
       name: 'albums',
       component: AlbumsView
     },
-    { 
-      path: '/album/:id', 
-      name: 'album', 
-      component: AlbumView 
+    {
+      path: '/album/:id',
+      name: 'album',
+      component: AlbumView
     },
     {
       path: '/photos',
       name: 'photos',
       component: PhotosView
     },
-    { 
-      path: '/photo/:id', 
-      name: 'photo', 
-      component: PhotoView 
+    {
+      path: '/photo/:id',
+      name: 'photo',
+      component: PhotoView
     },
+    { 
+      path: '/404', 
+      name: 'notfound', 
+      component: NotFound 
+    },
+    { 
+      path: '/:pathMatch(.*)*', 
+      name: 'notfound', 
+      component: NotFound 
+    }
   ]
 })
 

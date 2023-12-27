@@ -6,11 +6,14 @@ import { RouterLink, RouterView } from 'vue-router'
   <header class="navbar">
     <div>
       <nav>
-        <RouterLink to="/posts">Posts</RouterLink> - 
-        <RouterLink to="/users">Users</RouterLink> -
-        <RouterLink to="/todos">Todos</RouterLink> - 
-        <RouterLink to="/albums">Albums</RouterLink> - 
-        <RouterLink to="/photos">Photos</RouterLink>
+        <!-- <div @click="$router.push({name: 'home'})" :style="{'color': $route.name === 'home' ? 'black' : 'gray'}" class="nav-link" aria-current="page">Home</div> -->
+        <!-- <RouterLink to="/" :style="{'color': $route.name === 'home' ? 'black' : 'gray'}">Главная</RouterLink> -  -->
+        <RouterLink to="/">Главная</RouterLink> - 
+        <RouterLink to="/users">Авторы</RouterLink> -
+        <RouterLink to="/posts">Посты</RouterLink> - 
+        <RouterLink to="/todos">Задачи</RouterLink> - 
+        <RouterLink to="/albums">Альбомы</RouterLink> - 
+        <RouterLink to="/photos">Фотографии</RouterLink>
       </nav>
     </div>
     <br />

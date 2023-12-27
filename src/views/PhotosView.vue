@@ -49,10 +49,10 @@ fetchPhotos()
     </div>
     <br />
 
-    <button @click="backPage">Предыдущая</button>
-    <button v-for="item in photos.length / perPage" :key="item" @click="() => goToPage(item)">
+    <button @click="backPage" :disabled=" page === 1">Предыдущая</button>
+    <button v-for="item in photos.length / perPage" :key="item" @click="() => goToPage(item)" :disabled="page === item">
       {{ item }}
     </button>
-    <button @click="nextPage">Следующаяя</button>
+    <button @click="nextPage" :disabled="page === photos.length / perPage">Следующаяя</button>
   </main>
 </template>

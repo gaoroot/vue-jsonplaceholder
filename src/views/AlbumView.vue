@@ -5,9 +5,11 @@ import { useAlbumStore } from '../stores/albums'
 import Album from '../components/Album.vue'
 const route = useRoute()
 const { album, loading, error } = storeToRefs(useAlbumStore())
-const { fetchAlbum } = useAlbumStore()
+// const { fetchAlbum } = useAlbumStore()
+const { fetchAlbumId} = useAlbumStore()
 
-fetchAlbum(route.params.id)
+fetchAlbumId(route.params.id)
+// fetchAlbum(route.params.id)
 </script>
 
 <template>

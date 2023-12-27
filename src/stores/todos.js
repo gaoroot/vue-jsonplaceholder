@@ -13,6 +13,8 @@ export const useTodoStore = defineStore('todo', () => {
     () => (authorId) => todos.value.filter((todo) => todo.userId === authorId)
   )
 
+  const todoCount = computed(() => todos.value.length)
+
   const fetchTodos = async () => {
     todos.value = []
     loading.value = true
@@ -41,5 +43,5 @@ export const useTodoStore = defineStore('todo', () => {
     }
   }
 
-  return { todos, todo, getTodosPerAuthor, fetchTodos, fetchTodo, loading, error }
+  return { todos, todo, getTodosPerAuthor, todoCount, fetchTodos, fetchTodo, loading, error }
 })

@@ -48,10 +48,10 @@ fetchTodos()
     </div>
     <br />
 
-    <button @click="backPage">Предыдущая</button>
-    <button v-for="item in todos.length / perPage" :key="item" @click="() => goToPage(item)">
+    <button @click="backPage" :disabled=" page === 1">Предыдущая</button>
+    <button v-for="item in todos.length / perPage" :key="item" @click="() => goToPage(item)" :disabled="page === item">
       {{ item }}
     </button>
-    <button @click="nextPage">Следующаяя</button>
+    <button @click="nextPage" :disabled="page === todos.length / perPage">Следующаяя</button>
   </main>
 </template>

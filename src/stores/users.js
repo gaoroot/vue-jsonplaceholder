@@ -12,6 +12,8 @@ export const useUserStore = defineStore('user', () => {
 
   const getPostUser = computed(() => users.value.find((user) => user.id === postStore.post.userId))
 
+  const userCount = computed (() => users.value.length)
+
   const fetchUsers = async () => {
     users.value = []
     loading.value = true
@@ -26,5 +28,5 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  return { users, getPostUser, fetchUsers, postStore, loading, error }
+  return { users, getPostUser, userCount, fetchUsers, postStore, loading, error }
 })

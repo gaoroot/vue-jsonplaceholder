@@ -14,6 +14,8 @@ export const usePhotoStore = defineStore('photo', () => {
     users.value.find((user) => user.id === postAlbum.album.userId)
   )
 
+  const photoCount = computed(() => photos.value.length)
+
   const fetchPhotos = async () => {
     photos.value = []
     loading.value = true
@@ -28,5 +30,5 @@ export const usePhotoStore = defineStore('photo', () => {
     }
   }
 
-  return { photos, getPhotoUser, fetchPhotos, postAlbum, loading, error }
+  return { photos, getPhotoUser, photoCount, fetchPhotos, postAlbum, loading, error }
 })

@@ -5,14 +5,17 @@ import { storeToRefs } from 'pinia'
 import { useUserStore } from '../stores/users'
 import { usePostStore } from '../stores/posts'
 import { useTodoStore } from '../stores/todos'
+import { useAlbumStore } from '@/stores/albums'
 import User from '../components/User.vue'
 
 const route = useRoute()
 const { users, loading, error } = storeToRefs(useUserStore())
 const { getPostsPerAuthor } = storeToRefs(usePostStore())
 const { getTodosPerAuthor } = storeToRefs(useTodoStore())
+const { getAlbumsPerAuthor } = storeToRefs(useAlbumStore())
 const { fetchPosts } = usePostStore()
 const { fetchTodos } = useTodoStore()
+const { fetchAlbums } = useAlbumStore()
 
 const getAuthorByUserName = computed(() => {
   return users.value.find((user) => user.username === route.params.username)
@@ -20,6 +23,7 @@ const getAuthorByUserName = computed(() => {
 
 fetchPosts()
 fetchTodos()
+fetchAlbums()
 </script>
 
 <template>
@@ -31,6 +35,7 @@ fetchTodos()
         :user="getAuthorByUserName"
         :posts="getPostsPerAuthor(getAuthorByUserName.id)"
         :todos="getTodosPerAuthor(getAuthorByUserName.id)"
+        :albums="getAlbumsPerAuthor(getAuthorByUserName.id)"
       >
       </User>
     </p>

@@ -6,6 +6,7 @@ import { ref, computed } from 'vue'
 
 const { albums, loading, error } = storeToRefs(useAlbumStore())
 const { fetchAlbums } = useAlbumStore()
+// const { fetchAlbumId} = useAlbumStore()
 
 let page = ref(1)
 
@@ -34,6 +35,7 @@ const goToPage = (numPage) => {
   page.value = numPage
 }
 
+// fetchAlbumId()
 fetchAlbums()
 </script>
 
@@ -48,10 +50,10 @@ fetchAlbums()
     </div>
     <br />
 
-    <button @click="backPage">Предыдущая</button>
-    <button v-for="item in albums.length / perPage" :key="item" @click="() => goToPage(item)">
+    <button @click="backPage" :disabled=" page === 1">Предыдущая</button>
+    <button v-for="item in albums.length / perPage" :key="item" @click="() => goToPage(item)" :disabled="page === item">
       {{ item }}
     </button>
-    <button @click="nextPage">Следующаяя</button>
+    <button @click="nextPage" :disabled="page === albums.length / perPage">Следующаяя</button>
   </main>
 </template>

@@ -13,6 +13,8 @@ export const usePostStore = defineStore('post', () => {
     () => (authorId) => posts.value.filter((post) => post.userId === authorId)
   )
 
+  const postCount = computed(() => posts.value.length)
+
   const fetchPosts = async () => {
     posts.value = []
     loading.value = true
@@ -41,5 +43,5 @@ export const usePostStore = defineStore('post', () => {
     }
   }
 
-  return { posts, post, getPostsPerAuthor, fetchPosts, fetchPost, loading, error }
+  return { posts, post, getPostsPerAuthor, postCount, fetchPosts, fetchPost, loading, error }
 })

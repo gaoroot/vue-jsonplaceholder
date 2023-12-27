@@ -14,6 +14,8 @@ export const useCommentStore = defineStore('comment', () => {
     comments.value.filter((post) => post.postId === postStore.post.id)
   )
 
+  const commentCount = computed(() => comments.value.length)
+
   const fetchComments = async () => {
     comments.value = []
     loading.value = true
@@ -28,5 +30,5 @@ export const useCommentStore = defineStore('comment', () => {
     }
   }
 
-  return { comments, getPostComments, fetchComments, postStore, loading, error }
+  return { comments, getPostComments, commentCount, fetchComments, postStore, loading, error }
 })
