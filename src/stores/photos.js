@@ -30,5 +30,21 @@ export const usePhotoStore = defineStore('photo', () => {
     }
   }
 
-  return { photos, getPhotoUser, photoCount, fetchPhotos, postAlbum, loading, error }
+  const fetchPhoto = async (id) => {
+    photos.value = []
+    loading.value = true
+    try {
+      photos.value = await fetch(`${urlPhotos}/${id}`).then((response) => response.json())
+    }
+    catch (error) {
+      error.value = error
+      console.log('error_urlPhotos_id', error)
+      alert(error)
+    }
+    finally {
+      loading.value = false
+    }
+  }
+
+  return { photos, getPhotoUser, photoCount, fetchPhotos, fetchPhoto, postAlbum, loading, error }
 })

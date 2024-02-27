@@ -20,7 +20,7 @@ fetchPhoto(route.params.id)
     <p v-if="loading">Загрузка поста...</p>
     <p v-if="error">{{ error.message }}</p>
     <p v-if="photo">
-      <Photo :photo="photo" :user="getPostUser"></Photo>
+      <Photo :photo="photo"></Photo>
     </p>
   </div>
 </template>

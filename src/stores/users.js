@@ -28,5 +28,20 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  return { users, getPostUser, userCount, fetchUsers, postStore, loading, error }
+  const fetchUser = async (id) => {
+    users.value = []
+    loading.value = true
+    try {
+      users.value = await fetch(`${urlUsers}/${id}`).then((response) => response.json())
+    } catch (error) {
+      error.value = error
+      console.log('error_urlUsers_id', error)
+      alert(error)
+    }
+    finally {
+      loading.value = false
+    }
+  }
+
+  return { users, getPostUser, userCount, fetchUsers, fetchUser, postStore, loading, error }
 })

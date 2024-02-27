@@ -1,8 +1,9 @@
+<script setup>
+defineProps(['photo'])
+</script>
+
 <template>
   <div>
-    Photo
+    <h2>{{ photo.id }}</h2>
   </div>
 </template>
-<script setup>
-
-</script>
